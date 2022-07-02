@@ -1,0 +1,52 @@
+<div class="ngid-accordion-card" *ngIf="!model.isHidden">
+  <div
+    class="ngid-accordion-card-header"
+    (click)="handleExpandCollapse()"
+    [ngClass]="model.isDisabled ? 'disabled' : ''"
+  >
+    <div class="ngid-accordion-card-header-content">
+      <ng-container *ngTemplateOutlet="headerLeftTmpl"></ng-container>
+
+      <div class="ngid-accordion-card-header-content-main">
+        <ng-container
+          *ngTemplateOutlet="
+            headerTmpl ? customHeaderTemplate : defaultHeaderTemplate
+          "
+        >
+        </ng-container>
+
+        <ng-template #customHeaderTemplate>
+          <ng-container *ngTemplateOutlet="headerTmpl"></ng-container>
+        </ng-template>
+
+        <ng-template #defaultHeaderTemplate>
+          <h3 class="title">{{ header }}</h3>
+        </ng-template>
+      </div>
+
+      <ng-container *ngTemplateOutlet="headerRightTmpl"></ng-container>
+    </div>
+
+    <ng-container
+      *ngTemplateOutlet="iconTmpl ? customIconTmpl : defaultIconTmpl"
+    ></ng-container>
+
+    <ng-template #customIconTmpl>
+      <ng-container
+        *ngTemplateOutlet="iconTmpl; context: { $implicit: model.isExpanded }"
+      ></ng-container>
+    </ng-template>
+
+    <ng-template #defaultIconTmpl>
+      <em
+        class="fas fa-chevron-down"
+        [@rotate]="model.isExpanded ? 'rotated' : 'default'"
+      ></em>
+    </ng-template>
+  </div>
+  <div *ngIf="model.isExpanded" @expandCollapse>
+    <div class="ngid-accordion-card-body">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

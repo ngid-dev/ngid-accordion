@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+div.ngid-accordion {
+  div.ngid-accordion-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+  }
+  div.ngid-accordion-body {
+    div.ngid-accordion-card {
+      margin-bottom: 5px;
+      border-radius: 5px;
+      overflow: hidden;
+      div.ngid-accordion-card-header {
+        background: #f0f0f0;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        &.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+        div.ngid-accordion-card-header-content {
+          display: flex;
+          align-items: center;
+          flex: 1;
+          div.ngid-accordion-card-header-content-main {
+            flex: 1;
+          }
+          h3 {
+            margin: 0;
+          }
+        }
+      }
+      div.ngid-accordion-card-body {
+        padding: 1rem;
+        border: 1px solid #f0f0f0;
+        border-top: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}

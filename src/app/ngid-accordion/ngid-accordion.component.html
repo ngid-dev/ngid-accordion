@@ -1,0 +1,10 @@
+<div class="ngid-accordion">
+  <div class="ngid-accordion-header" *ngIf="isShowButtonExpandAll">
+    <button class="btn btn-primary btn-sm" (click)="handleExpandCollapseAll()">
+      {{ state.model.isExpandedAll ? "Collapse All" : "Expand All" }}
+    </button>
+  </div>
+  <div class="ngid-accordion-body">
+    <ng-content select="ngid-accordion-item"></ng-content>
+  </div>
+</div>
